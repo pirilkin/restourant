@@ -584,12 +584,12 @@ input::placeholder {
       position: absolute;
       height: 735px;
       width: 50%;
-      background: url("../../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0); }
+      background: url("../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0); }
       @media (max-width: 1399.98px) {
         .header-slider-block {
           width: 43%;
           height: 480px;
-          background: url("../../img/header-dots-md_01.png") repeat rgba(1, 1, 0, 0); } }
+          background: url("../img/header-dots-md_01.png") repeat rgba(1, 1, 0, 0); } }
       @media (max-width: 545.98px) {
         .header-slider-block {
           height: 400px; } }
@@ -854,7 +854,7 @@ input::placeholder {
         position: absolute;
         top: -70px;
         left: 35px;
-        background: url("../../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
+        background: url("../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
         width: 300px;
         height: 50px; }
         @media (max-width: 545.98px) {
@@ -880,7 +880,7 @@ input::placeholder {
             .food-block-content-dots-right-content {
               bottom: -3%; } }
         .food-block-content-dots-right-horizontal {
-          background: url("../../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
+          background: url("../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
           position: absolute;
           bottom: 0;
           right: 0;
@@ -890,7 +890,7 @@ input::placeholder {
           position: absolute;
           bottom: 70px;
           right: 0;
-          background: url("../../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
+          background: url("../img/advanced-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
           height: 320px;
           width: 50px; }
       .food-block-content-arrow {
@@ -1201,7 +1201,7 @@ input::placeholder {
         padding-left: 35px; } }
   .services-content {
     width: 100%;
-    background: url("../../img/services-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
+    background: url("../img/services-dots-xxl_02.png") repeat rgba(1, 1, 0, 0);
     padding: 105px 0 100px; }
     @media (max-width: 991.98px) {
       .services-content {
@@ -1677,7 +1677,7 @@ input::placeholder {
         border-radius: 50%;
         height: 56px;
         width: 56px;
-        background-image: url("../../img/footer-arrow.svg");
+        background-image: url("../img/footer-arrow.svg");
         background-position: center;
         background-repeat: no-repeat; }
         @media (max-width: 991.98px) {
