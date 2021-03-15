@@ -33,10 +33,6 @@ class SLIDER {
 
             if (i != this.activeSlide) {
                 sl.style.transform = `translate${this.dir}(${this.moveSize}px)`
-                // sl.style.transform = `scale(0.9)`;
-                // sl.style.opacity = `0.5`;
-                // this.slides[this.activeSlide].style.transform = `scale(0.9)`;
-                // this.slides[this.activeSlide].style.opacity = `1`;
             }
             if (i === this.slides.length - 1) {
                 sl.style.transform = `translate${this.dir}(${-this.moveSize}px)`
@@ -76,7 +72,7 @@ class SLIDER {
                 }
             }
 
-            // console.log(this.width);
+
 
         })
     }
@@ -92,10 +88,10 @@ class SLIDER {
         for (let i = 0; i < this.slides.length; i++) {
             const slide = this.slides[i];
             slide.style.transition = '0ms';
-            // slide.style.display = `block`;
+ 
             if (i != this.activeSlide) {
                 slide.style.transform = `translate${this.dir}(${btnLeftOrRight * -1}px)`;
-                // slide.style.display = `none`;
+
             }
 
         }
@@ -105,7 +101,7 @@ class SLIDER {
             this.activeSlide++;
             if (this.activeSlide >= this.slides.length) {
                 this.activeSlide = 0;
-                // console.log(this.activeSlide.style.display = `block`);
+
             }
         }
         else if (btn == this.prev) {
@@ -115,25 +111,6 @@ class SLIDER {
             }
         }
         this.slides[this.activeSlide].style.transform = `translate${this.dir}(0px)`;
-        // this.slides[this.activeSlide].style.transform = `translateY(2%)`;
-        // this.slides[this.activeSlide].style.transform = `scale(1.05)`;
-        // this.slides[this.activeSlide].style.display = `block`;
-
-        // const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-        // let newArray = arr.filter(callback( this.slides[this.activeSlide]));
-
-        // const result = this.slides.filter(this.slides => this.slides != this.slides[this.activeSlide]);
-        // const result = this.slides.filter(this.slides => this.slides [i]!= this.slides[this.activeSlide]);
-
-        // this.slides[this.activeSlide].style = `transform: scale(1.05);
-        //                                     transform : translateY(2%)`;
-        // this.sliderLine.this.slides[this.activeSlide].style.transform = `translateY(-10%)`;
-        // this.slides[this.activeSlide].children.style.width = `100%`;
-
-        // this.slides[this.activeSlide].style = ` transform: translate${this.dir}(0px) scale(0.5);
-        //                                         opacity: 1;
-        //                                         ${this.timeMove}ms`;
-        // this.slides[this.activeSlide].style.opacity = `1`;
         this.slides[this.activeSlide].style.transition = this.timeMove + 'ms'
 
     }
@@ -145,13 +122,8 @@ const slider = new SLIDER({
     time: 1000,
     autoplay: false
 })
-// const slider2 = new SLIDER({
-//     slider: '.',
-//     direction: 'X',
-//     time: 1000,
-//     autoplay: false
-// })
 
+//работа попапа и бургер меню
 const burger = document.querySelector('.burger');
 const burgerLine = document.querySelector('.burger__line');
 const headerNavContainer = document.querySelector('.header-nav-container');
@@ -194,27 +166,16 @@ switchBtn.onclick = () => {
 headerNavUserItem.onclick = () => {
     headerNavUserColor.classList.toggle('is-hidden');
     headerNavUserItemIcon.classList.toggle('is-rotated');
-    // headerNavUserItemIcon.style = 
-    // headerNavUserColor.style= `transition: 1s`;
 }
+//маска для поля ввода инпута количества людей
 const patternData = /\D/g;
-
 document.getElementById( 'people' ).oninput = function(e) {
-
     let cursor = this.selectionStart, pattern = patternData;
-
       if ( this.value.match( pattern ) ) {
-
-        // alert( 'Только цифры' );
-
         this.value = this.value.replace( pattern, '' );
-
         cursor--;
-
       }
-
       this.selectionEnd = cursor;
-
   }
 
 //# sourceMappingURL=main.js.map
