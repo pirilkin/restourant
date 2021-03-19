@@ -7,7 +7,6 @@
 
 class SLIDER {
     constructor(options) {
-
         this.slider = document.querySelector(options.slider);
         this.sliderLine = this.slider.querySelector('.header-slider__line');
         this.slides = this.sliderLine.children;
@@ -23,16 +22,21 @@ class SLIDER {
         this.activeSlide = 0;
         this.sliderLine.style = `
                                position:relative;
-                               overflow:hidden;`
+                               overflow:hidden;`;
 
         for (let i = 0; i < this.slides.length; i++) {
             const sl = this.slides[i];
             sl.style = ` position:absolute;
                          width: ${this.width}px;
                          height: ${this.height}px`;
-
+            
             if (i != this.activeSlide) {
                 sl.style.transform = `translate${this.dir}(${this.moveSize}px)`
+                sl.classList.add('display-none');
+            }
+            else {
+                this.slides[this.activeSlide].classList.add('z-index');
+                this.slides[this.activeSlide].classList.remove('display-none');
             }
             if (i === this.slides.length - 1) {
                 sl.style.transform = `translate${this.dir}(${-this.moveSize}px)`
@@ -65,16 +69,15 @@ class SLIDER {
                                              width: ${this.width}px;
                                              height: ${this.height}px`;
                 if (i != this.activeSlide) {
-                    sl.style.transform = `translate${this.dir}(${this.moveSize}px)`
+                    sl.style.transform = `translate${this.dir}(${this.moveSize}px);`;
+                    sl.classList.add('display-none');
                 }
                 if (i === this.slides.length - 1) {
                     sl.style.transform = `translate${this.dir}(${-this.moveSize}px)`
                 }
             }
-
-
-
         })
+
     }
     move(btn) {
         this.next.disabled = true;
@@ -88,20 +91,19 @@ class SLIDER {
         for (let i = 0; i < this.slides.length; i++) {
             const slide = this.slides[i];
             slide.style.transition = '0ms';
- 
             if (i != this.activeSlide) {
                 slide.style.transform = `translate${this.dir}(${btnLeftOrRight * -1}px)`;
-
             }
-
         }
         this.slides[this.activeSlide].style.transform = `translate${this.dir}(${btnLeftOrRight}px)`;
         this.slides[this.activeSlide].style.transition = this.timeMove + 'ms ease';
+        this.slides[this.activeSlide].classList.remove('z-index');
+        this.slides[this.activeSlide].classList.add('display-none');
+
         if (btn == this.next) {
             this.activeSlide++;
             if (this.activeSlide >= this.slides.length) {
                 this.activeSlide = 0;
-
             }
         }
         else if (btn == this.prev) {
@@ -111,19 +113,34 @@ class SLIDER {
             }
         }
         this.slides[this.activeSlide].style.transform = `translate${this.dir}(0px)`;
-        this.slides[this.activeSlide].style.transition = this.timeMove + 'ms'
+        this.slides[this.activeSlide].style.transition = `1s`;
+        this.slides[this.activeSlide].classList.add('z-index');
+        this.slides[this.activeSlide].classList.remove('display-none');
+        this.slides[this.activeSlide].style.transition = this.timeMove + 'ms';
 
     }
+
 }
 
 const slider = new SLIDER({
     slider: '.header-slider',
     direction: 'X',
-    time: 1000,
+    time: 500,
     autoplay: false
 })
 
-//работа попапа и бургер меню
+
+const launcherSliderBlock = document.querySelector('.food-line');
+const launcherSlider = document.querySelector('.food-block-content-arrow');
+const foodContainerRow = document.querySelector('.food-container-row');
+const sliderArrow = document.querySelector('.food-slider-arrows');
+
+const firstSlide = document.querySelector('.food-block-content__item-first');
+const secondSlide = document.querySelector('.food-block-content__item-second');
+const thirdSlide = document.querySelector('.food-block-content__item-third');
+
+
+//бургер и все что с ним связано
 const burger = document.querySelector('.burger');
 const burgerLine = document.querySelector('.burger__line');
 const headerNavContainer = document.querySelector('.header-nav-container');
@@ -142,12 +159,15 @@ const headerNavUserColor = document.querySelector('.header-nav-user-color');
 const headerNavUserItem = document.querySelector('.header-nav-user__item');
 const headerNavUserItemIcon = document.querySelector('.header-nav-user__item-icon');
 const foodBlockContentText = document.querySelectorAll('.food-block-content-text');
+const headLink = document.head.children[5];
+headLink.setAttribute('href', 'favicon/favicon-red.ico');
 
 switchBtn.onclick = () => {
     switchBtn.classList.toggle('switch-on');
     if (switchBtn.classList.contains('switch-on')) {
         body.classList.add('green');
         body.classList.remove('red');
+        headLink.setAttribute('href', 'favicon/favicon-green.ico');
         foodBlockContentText.forEach(element => {
             element.classList.remove('red-bg-opacity');
             element.classList.add('green-bg-opacity');
@@ -156,6 +176,7 @@ switchBtn.onclick = () => {
     else {
         body.classList.add('red');
         body.classList.remove('green');
+        headLink.setAttribute('href', 'favicon/favicon-red.ico');
         foodBlockContentText.forEach(element => {
             element.classList.remove('green-bg-opacity');
             element.classList.add('red-bg-opacity');
@@ -167,15 +188,16 @@ headerNavUserItem.onclick = () => {
     headerNavUserColor.classList.toggle('is-hidden');
     headerNavUserItemIcon.classList.toggle('is-rotated');
 }
-//маска для поля ввода инпута количества людей
+// настройка маски для инпута количества людей
 const patternData = /\D/g;
-document.getElementById( 'people' ).oninput = function(e) {
+document.getElementById('people').oninput = function (e) {
     let cursor = this.selectionStart, pattern = patternData;
-      if ( this.value.match( pattern ) ) {
-        this.value = this.value.replace( pattern, '' );
+    if (this.value.match(pattern)) {
+        this.value = this.value.replace(pattern, '');
         cursor--;
-      }
-      this.selectionEnd = cursor;
-  }
+    }
+    this.selectionEnd = cursor;
+}
+
 
 //# sourceMappingURL=main.js.map
